@@ -15,6 +15,10 @@ header {
     height: 500px;
 }
 
+section {
+    margin-bottom: 50px;
+}
+
 h1 {
     padding-top: 180px;
     font-size: 4rem;
@@ -34,7 +38,6 @@ h2 {
 #introduction {
     text-align: justify;
     font-size: 1rem;
-    margin-bottom: 40px;
 }
 
 #ingredients {
@@ -62,15 +65,19 @@ ul {
     list-style-type: "- ";
 }
 
-@counter-style ol-parenthesis {
-    suffix: ") ";
-}
+
+/*thanks DisgruntledGoat from Stack Oveflow, may god repay you with few children and many tries */
 
 ol {
-    list-style: ol-parenthesis;
+    counter-reset: list;
     text-align: justify;
 }
 
+ol > li {
+    list-style: none;
+}
 
-
-
+ol > li:before {
+    content: counter(list, numeric) ") ";
+    counter-increment: list;
+}
